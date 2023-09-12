@@ -21,7 +21,7 @@ def calculate_similarity(user1, user2):
     # Combine age and interest similarities
     overall_similarity = (age_similarity + interest_similarity) / 2
 
-    print(overall_similarity)
+    # print(overall_similarity)
 
     return overall_similarity
 
@@ -41,6 +41,7 @@ def recommend_friends(user_data, all_users_data):
     return [user_data for user_data, _ in user_scores]
 
 
+# returning json file
 def get_suggested_friends(request, user_id):
     # print(int(user_id))
     # Load the JSON data from the provided file
@@ -49,7 +50,7 @@ def get_suggested_friends(request, user_id):
 
     # Get the user data for the specified user_id
 
-    print(data['users'][0])
+    # print(data['users'][0])
 
     data = data['users']
     user_id = 5
@@ -74,4 +75,4 @@ def get_suggested_friends(request, user_id):
         'suggested_friends': top_5_suggested_friends,
     }
 
-    return render(request, 'friends/suggested_friends.html', context)
+    return JsonResponse(context)

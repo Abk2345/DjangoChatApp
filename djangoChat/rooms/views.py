@@ -23,8 +23,9 @@ def room(request, slug):
 def home(request):
     return render(request, 'rooms/home.html')
 
-
+@login_required
 def get_active_users(request):
+    current_user = request.user
     # Get all active sessions
     active_sessions = Session.objects.filter(expire_date__gte=timezone.now())
 
@@ -34,10 +35,12 @@ def get_active_users(request):
     # Query the User model to get user objects for active users
     active_users = User.objects.filter(id__in=user_ids)
 
-    print(active_users)
+    active_users_except_current = active_users.exclude(id=current_user.id)
+
+    # print(active_users)
 
     # You can now use active_users in your template or return it as JSON data
-    return render(request, 'rooms/active_users.html', {'active_users': active_users})
+    return render(request, 'rooms/active_users.html', {'active_users': active_users_except_current})
 
 @login_required
 def personalChatUser(request, username):
@@ -50,6 +53,8 @@ def personalChatUser(request, username):
         sender=friend,
         recipient=request.user
     ).order_by('timestamp')
+
+    # print(friend, messages)
 
   
     return render(request, 'rooms/personal_chat.html', {'friend': friend, 'messages':messages})

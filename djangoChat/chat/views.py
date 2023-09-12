@@ -28,3 +28,9 @@ def signup(request):
 
     return render(request, 'chat/signup.html', {'form': form})
 
+from django.contrib.auth.views import LoginView
+from .forms import CustomAuthenticationForm  # Import the custom form
+
+class CustomLoginView(LoginView):
+    form_class = CustomAuthenticationForm  # Use the custom form
+    template_name = 'chat/login.html'  # Your login template

@@ -7,5 +7,23 @@
     <h1>
         DjangoChatApp
     </h1>
+    <div>
+        <h3>Enter user id and get friends suggested by very optimistic algorithm based on similar age and interest</h3>
+        <input type="number" name="user_id" id="user_id_input">
+        <a href="#" id="suggest_friends_link" onclick="suggestFriends()">
+            Suggest Friends
+        </a>
+    </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+        <script>
+            function suggestFriends() {
+                const user_id = document.getElementById("user_id_input").value;
+                const suggestLink = document.getElementById("suggest_friends_link");
+                suggestLink.href = `/friends/suggest/${user_id}`;
+            }
+        </script>
+        
 {% endblock %}

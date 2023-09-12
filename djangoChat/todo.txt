@@ -4,7 +4,7 @@ done -> log out
 
 done -> log in
 
-### Rooms
+### chat Rooms
 
 done -> create app for rooms
 done -> create superuser
@@ -18,10 +18,21 @@ done- joining a chat
 ## sending messages
 sending messages -> done
 storing messages -> done
-scrolling to the bottom of chat room on texting
+scrolling to the bottom of chat room on texting -> done
 
-#styling elements in the app, is to be done
+# Extending idea to personal messaging -> done
+1. List of Online users except logged in -> done
+2. realtime chat between two users -> done
 
-# further works
--> add time on message
--> give option to delete message
+# Suggest friends algorithm -> done
+
+# Rigorous Testing on device -> done
+
+# Writing tests for api's -> done
+
+# Organizing and structuring code
+
+# deploying to aws ec2
+
+
+

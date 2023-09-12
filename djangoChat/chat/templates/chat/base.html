@@ -15,9 +15,10 @@
 
     <body >
         <nav>
-            <div>
+            <div style="flex-direction: column;">
+                <h1>DjangoChatApp</h1>
                 <a href="/">
-                    DjangoChatApp
+                    Home
                 </a>
             </div>
 
@@ -31,7 +32,7 @@
                     </div>
                     <div>
                         <a href="/chat/rooms/">
-                            Rooms
+                            Public Chat Rooms
                         </a>
                     </div>
                     <div>
@@ -40,12 +41,6 @@
                         </a>
                     </div>
                     
-                    <div>
-                        <input type="number" name="user_id" id="user_id_input">
-                        <a href="#" id="suggest_friends_link" onclick="suggestFriends()">
-                            Suggest Friends
-                        </a>
-                    </div>
                 {% else %}
                     <div>
                     <a href="/login">
@@ -65,13 +60,6 @@
         {% endblock %}
 
         {% block scripts %}
-        <script>
-            function suggestFriends() {
-                const user_id = document.getElementById("user_id_input").value;
-                const suggestLink = document.getElementById("suggest_friends_link");
-                suggestLink.href = `/friends/suggest/${user_id}`;
-            }
-        </script>
         
         {% endblock %}
     </body>
