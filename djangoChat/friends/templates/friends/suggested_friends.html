@@ -1,0 +1,15 @@
+  <h1 style="margin-bottom: 20;">Input User data: </h1>
+  <h2>Id: {{user_id}}</h2>
+  <h2> Name: {{ user_data.name }}</h2>
+  <h2> Age:  {{user_data.age }} </h2>
+  <h2> Interests: {{user_data.interests}} </h2>
+
+  <h1>Recommended Friends: Based on Age and Similar Interests </h1>
+  <div style="margin-bottom: 5;">
+    {% for friend in suggested_friends %}
+      <h2> Name: {{ friend.name }}</h2>
+      <h2> Age:  {{friend.age }} </h2>
+      <h2> Interests: {{friend.interests}} </h2>
+     
+    {% endfor %}
+  </div>

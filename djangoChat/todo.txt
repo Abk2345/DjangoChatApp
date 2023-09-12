@@ -1,0 +1,27 @@
+sign up -> Done
+
+done -> log out
+
+done -> log in
+
+### Rooms
+
+done -> create app for rooms
+done -> create superuser
+done -> show list of rooms
+done -> room detail view
+
+## Main part
+done - creating a consumer - using websocket
+done- joining a chat
+
+## sending messages
+sending messages -> done
+storing messages -> done
+scrolling to the bottom of chat room on texting
+
+#styling elements in the app, is to be done
+
+# further works
+-> add time on message
+-> give option to delete message

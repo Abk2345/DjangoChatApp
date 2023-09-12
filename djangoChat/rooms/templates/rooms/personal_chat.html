@@ -1,0 +1,110 @@
+{% extends 'chat/base.html' %}
+
+{% block title %} Personal Chat with {{ friend.username }} | {% endblock %}
+
+{% block content %}
+<div>
+    <h1>
+        Personal Chat with {{ friend.username }}
+    </h1>
+</div>
+<div>
+    <div id="chat-messages" style="max-height: 500px; overflow-y: auto;">
+        {% for message in messages %}
+            <div>
+                <span>
+                    <b>{{ message.sender.username }}</b>
+                    <p>{{ message.content }}</p>
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        <form id="personal-chat-form">
+            {% csrf_token %}
+            <input type="text" name="content" placeholder="Your message..." id="chat-message-input">
+            <button id="chat-message-submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ friend.username|json_script:"json-friend-username" }}
+{{ request.user.username|json_script:"json-username" }}
+<script>
+    const friendUsername = JSON.parse(document.getElementById("json-friend-username").textContent);
+    const userName = JSON.parse(document.getElementById("json-username").textContent);
+
+    const chatSocket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/chat/'
+        +  friendUsername
+        + '/'
+    );
+    chatSocket.onopen = function (e) {
+        console.log('WebSocket opened:', e);
+    };
+
+    chatSocket.onmessage = function (e) {
+        console.log('WebSocket message received:', e);
+
+        const data = JSON.parse(e.data);
+
+        if (data.message) {
+            console.log("Received message:", data.message);
+
+            let html = '<div>';
+            html += '<b>' + data.sender_username + '</b>';
+            html += '<p>' + data.message + '</p>';
+            html += '</div>';
+
+            const chatMessagesDiv = document.querySelector('#chat-messages');
+            chatMessagesDiv.innerHTML += html;
+
+            // Scroll to the latest message
+            chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
+        } else {
+            alert("The message was empty");
+        }
+    };
+
+    chatSocket.onclose = function (e) {
+        console.log('WebSocket closed:', e);
+    };
+
+    chatSocket.onerror = function (e) {
+        console.error('WebSocket error:', e);
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function (e) {
+        e.preventDefault(); // Prevent the form submission
+
+        const messageInputDom = document.querySelector('#chat-message-input');
+        const message = messageInputDom.value;
+        console.log("Sending message:", message);
+
+        chatSocket.send(JSON.stringify({
+            'message': message,
+            'sender_username': userName,
+            'receiver_username': friendUsername,  // Specify the friend's username
+        }));
+
+        messageInputDom.value = '';
+
+        scrollToBottom();
+    }
+
+    //scroll to bottom
+    function  scrollToBottom(){
+        const objDiv = document.querySelector('#chat-messages');
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+
+    scrollToBottom();
+
+    //reload of window
+    window.addEventListener('load', scrollToBottom);
+</script>
+{% endblock %}

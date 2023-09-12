@@ -1,0 +1,11 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}Online-users | {% endblock %}
+
+{% block content %}
+<div>
+    {% for users in active_users %}
+        <h1> <a href='/chat/start/{{users.username}}'>{{users.username}}</a></h1>
+    {% endfor %}
+</div>
+{% endblock %}
