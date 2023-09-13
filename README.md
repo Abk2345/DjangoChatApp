@@ -9,6 +9,17 @@ This Django App Contains:
 6. Personal Chat with online users
 7. Suggest friends based on users.json file data from an algorithm which suggests from similar age and interests
 
+Api Lists:
+1. homepage/frontpage: http://13.49.67.243:8000/
+2. signup: http://13.49.67.243:8000/signup/
+3. Login: http://13.49.67.243:8000/login/
+4. Logout: http://13.49.67.243:8000/logout/
+5. Chat homepage: http://13.49.67.243:8000/chat/
+6. Online users: http://13.49.67.243:8000/chat/online-users/
+7. chat with some user: http://13.49.67.243:8000/chat/start/{{username}}/
+8. Public chat rooms: http://13.49.67.243:8000/chat/rooms/
+9. Detail Public Chat Room: http://13.49.67.243:8000/chat/{{slug}}/
+10. Suggest Friends: http://13.49.67.243:8000/friends/suggest/{{userid}}
 
 SetUp Instruction:
 1. Clone Repository
