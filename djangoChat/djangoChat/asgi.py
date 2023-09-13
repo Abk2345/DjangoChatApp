@@ -10,6 +10,7 @@ import rooms.routing
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoChat.settings")
 
+# configuring web scoket with asgi 
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
     "websocket": AuthMiddlewareStack(

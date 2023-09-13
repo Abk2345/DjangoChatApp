@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# chat room model
 class Room(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
 
+# chat room, messages model
 class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages', on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name='messages', on_delete=models.CASCADE)
@@ -14,7 +16,7 @@ class Message(models.Model):
     class Meta:
         ordering = ('date_added',)
 
-
+# personal chat messages model
 class PersonalMessage(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_messages')

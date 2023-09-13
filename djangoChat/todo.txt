@@ -1,11 +1,8 @@
 sign up -> Done
-
 done -> log out
-
 done -> log in
 
 ### chat Rooms
-
 done -> create app for rooms
 done -> create superuser
 done -> show list of rooms
@@ -29,10 +26,11 @@ scrolling to the bottom of chat room on texting -> done
 # Rigorous Testing on device -> done
 
 # Writing tests for api's -> done
+# running tests -> done
 
-# Organizing and structuring code
+# Organizing and structuring code -> done
 
-# deploying to aws ec2
+# deploying to aws ec2 -> done
 
 
 

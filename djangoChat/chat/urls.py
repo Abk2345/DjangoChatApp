@@ -10,7 +10,7 @@ from . import views
 urlpatterns = [
     path('login/', LoginView.as_view(
         template_name='chat/login.html',
-        authentication_form=CustomAuthenticationForm  # Use your custom form
+        authentication_form=CustomAuthenticationForm  #using custom form from forms.py
         ), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup'),
