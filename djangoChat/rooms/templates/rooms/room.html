@@ -3,34 +3,32 @@
 {% block title %} {{room.name}} | {% endblock %}
 
 {% block content %}
-<div>
-    <h1>
-        Chat Room: {{room.name}}
+<div class="p-10 lg:p-20 text-center">
+    <h1 class="text-3xl lg:text-6xl text-white">
+        {{room.name}}
     </h1>
 </div>
-<div>
-    <div id="chat-messages" style="max-height: 500px; overflow-y: auto;">
+
+<div class="lg:w-2/4 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
+    <div class="chat-messages space-y-3" id="chat-messages">
         {% for message in messages %}
-            <div>
-                <span>
-            <b> {{message.user.username }}</b>
+            <div class="p-4 bg-gray-200 rounded-xl">
+            <p class="font-semibold"> {{message.user.username }}</p>
             <p> {{ message.content }}</p>
-                    </span>
             </div>
         {% endfor %}
     </div>
-    <div>
-        <form method="post" action="/">
+    <div class="lg:w-4/4 mt-6 mx-4 lg:mx-auto p-4 bg-white rouded-xl">
+        <form method="post" action="/" class="flex">
             {% csrf_token %}
-            <input type="text" name="content" placeholder="Your message..." id="chat-message-input">
+            <input type="text" name="content" class="flex-1 mr-4 p-4 bg-gray-200 rounded-xl" placeholder="Your message..." id="chat-message-input">
             <button
+                class="px-5 py-3 rounded-xl text-white bg-red-500 hover:bg-red-600"
                 id="chat-message-submit"
                 >Submit</button>
         </form>
     </div>
 </div>
-
-
 
 {% endblock %}
 
@@ -62,8 +60,8 @@
         if (data.message) {
             console.log("Received message:", data.message);
 
-            let html = '<div>';
-            html += '<b>' + data.username + '</b>';
+            let html = '<div class="p-4 bg-gray-200 rounded-xl">';
+            html += '<p class="font-semibold">' + data.username + '</p>';
             html += '<p>' + data.message + '</p>';
             html += '</div>';
 

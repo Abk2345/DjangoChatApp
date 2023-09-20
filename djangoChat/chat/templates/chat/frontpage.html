@@ -4,14 +4,14 @@
 
 {% block content %}
 <div>
-    <h1>
-        DjangoChatApp
-    </h1>
-    <div>
-        <h3>Enter user id and get friends suggested by very optimistic algorithm based on similar age and interest</h3>
-        <input type="number" name="user_id" id="user_id_input">
-        <a href="#" id="suggest_friends_link" onclick="suggestFriends()">
-            Suggest Friends
+    <div class="p-10 lg:p-20 text-center">
+        <h3 class="text-2xl lg:text-4xl text-white"> HomePage </h3>
+    </div>
+    <div class="p-10 lg:p-20 text-center">
+        <h3 class="text-xl lg:text-2xl text-white mb-10">Enter user id and get friends suggested by very optimistic algorithm based on similar age and interest</h3>
+        <input type="number" name="user_id" id="user_id_input" class="p-2 mr-10 rounded-md border border-gray-400 focus:outline-none focus:border-blue-500">
+        <a href="#" id="suggest_friends_link" onclick="suggestFriends()" class="px-5 py-3 rounded-xl text-white bg-red-700 hover:bg-red-800">
+            <b>Suggest Friends</b>
         </a>
     </div>
 </div>

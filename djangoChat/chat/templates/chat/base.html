@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intital-scale=1">
         <title>{% block title %}{% endblock %}DjangoChatApp</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+
         <style>
             .chat-messages{
             height: 400px;
@@ -13,45 +15,40 @@
         </style>
     </head>
 
-    <body >
-        <nav>
-            <div style="flex-direction: column;">
-                <h1>DjangoChatApp</h1>
-                <a href="/">
-                    Home
+    <body class="bg-red-500">
+        <nav class="flex items-center justify-between px-4 py-6 bg-red-900">
+            <div>
+                <a href="/" class="text-xl text-white">
+                    DjangoChatApp
                 </a>
             </div>
 
-            <div>
+            <div class="flex items-center space-x-4">
                 {% if request.user.is_authenticated %}
-                    <h1>Logged in as: {{request.user.username}}</h1>
+                    <h1 class="text-white hover:text-gray-200" >Logged in as: {{request.user.username}} | </h1>
                     <div>
-                        <a href="/chat/online-users/">
-                            Online users
+                        <a href="/chat/online-users/" class="text-white hover:text-gray-200">
+                            Online users |
                         </a>
                     </div>
                     <div>
-                        <a href="/chat/rooms/">
-                            Public Chat Rooms
+                        <a href="/chat/rooms/" class="text-white hover:text-gray-200">
+                            Public Chat Rooms |
                         </a>
                     </div>
                     <div>
-                        <a href="/logout">
+                        <a href="/logout" class="px-5 py-3 rounded-xl text-white bg-red-500 hover:bg-red-700">
                             Log out
                         </a>
                     </div>
-                    
+
                 {% else %}
-                    <div>
-                    <a href="/login">
+                    <a href="/login" class="text-white hover:text-gray-200">
                         Log In
                     </a>
-                    </div>
-                    <div>
-                        <a href="/signup">
-                            Sign Up
-                        </a>
-                    </div>
+                    <a href="/signup" class="px-5 py-3 rounded-xl text-white bg-red-600 hover:bg-red-700">
+                        Sign Up
+                    </a>
                 {% endif %}
             </div>
         </nav>
@@ -60,7 +57,6 @@
         {% endblock %}
 
         {% block scripts %}
-        
         {% endblock %}
     </body>
 </html>
