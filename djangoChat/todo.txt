@@ -32,5 +32,7 @@ scrolling to the bottom of chat room on texting -> done
 
 # deploying to aws ec2 -> done
 
+# tailwind css -> added
+
 
 
